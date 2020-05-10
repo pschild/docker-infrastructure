@@ -1,1 +1,55 @@
-as
+version: "3.8"
+services:
+  registry:
+    image: registry:2
+    ports:
+      - 5000:5000
+    volumes:
+      - /mnt/registry:/var/lib/registry
+    restart: always
+
+  jenkins:
+    image: jenkins
+    build: ./jenkins
+    container_name: jenkins
+    volumes:
+      - jenkins_home:/var/jenkins_home
+      - /var/run/docker.sock:/var/run/docker.sock
+      - /usr/bin/docker:/usr/bin/docker
+      - esp-binfiles:/var/binfiles
+    ports:
+      - "8080:8080"
+      - "50000:50000"
+    restart: always
+
+  watchtower:
+    image: containrrr/watchtower
+    container_name: watchtower
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock
+    command: --interval 300 --cleanup
+    restart: always
+
+  esp-pir-endpoint:
+    image: localhost:5000/esp-pir-endpoint
+    build: ../services/esp-pir-endpoint
+    container_name: esp-pir-endpoint
+    ports:
+      - "9052:9052"
+    restart: always
+
+  esp-update-server:
+    image: localhost:5000/esp-update-server
+    build: ../services/esp-update-server
+    container_name: esp-update-server
+    volumes:
+      - esp-binfiles:/app/binfiles
+    ports:
+      - "9042:9042"
+    restart: always
+
+volumes:
+  jenkins_home:
+    name: jenkins_home
+  esp-binfiles:
+    name: esp-binfiles
