@@ -48,6 +48,14 @@ services:
     ports:
       - "9042:9042"
     restart: always
+    
+  esp-mqtt-broker:
+    image: localhost:5000/esp-mqtt-broker
+    build: ../services/esp-mqtt-broker
+    container_name: esp-mqtt-broker
+    ports:
+      - "1883:1883"
+    restart: always
 
 volumes:
   jenkins_home:
