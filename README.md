@@ -8,6 +8,7 @@ The included `docker-compose.yml` builds/starts the following containers:
  - **ESP services**:
    - [esp-pir-endpoint](https://github.com/pschild/esp-pir-endpoint)
    - [esp-update-server](https://github.com/pschild/esp-update-server)
+   - [esp-mqtt-broker](https://github.com/pschild/esp-mqtt-broker)
 
 ## How to use
 
