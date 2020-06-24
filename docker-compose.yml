@@ -56,6 +56,14 @@ services:
     ports:
       - "1883:1883"
     restart: always
+    
+  adesso-commuter-server:
+    image: localhost:5000/adesso-commuter-server
+    build: ../services/adesso-commuter-server
+    container_name: adesso-commuter-server
+    ports:
+      - "9062:9062"
+    restart: always
 
 volumes:
   jenkins_home:
