@@ -53,8 +53,19 @@ services:
     image: localhost:5000/esp-mqtt-broker
     build: ../services/esp-mqtt-broker
     container_name: esp-mqtt-broker
+    depends_on:
+      - "mongodb"
     ports:
       - "1883:1883"
+    restart: always
+
+  mongodb:
+    image: ivanmarban/armhf-mongodb
+    container_name: mongodb
+    volumes:
+      - /mnt/mongodb:/var/lib/mongodb
+    ports:
+      - "27017:27017"
     restart: always
     
   adesso-commuter-server:
