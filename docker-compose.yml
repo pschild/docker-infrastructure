@@ -72,6 +72,8 @@ services:
     image: localhost:5000/adesso-commuter-server
     build: ../services/adesso-commuter-server
     container_name: adesso-commuter-server
+    volumes:
+      - /mnt/adesso-commuter-server/screenshots:/app/screenshots
     ports:
       - "9062:9062"
     restart: always
