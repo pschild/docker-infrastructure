@@ -31,10 +31,10 @@ services:
     command: --interval 300 --cleanup
     restart: always
 
-  esp-pir-endpoint:
-    image: localhost:5000/esp-pir-endpoint
-    build: ../services/esp-pir-endpoint
-    container_name: esp-pir-endpoint
+  esp-pir-manager:
+    image: localhost:5000/esp-pir-manager
+    build: ../services/esp-pir-manager
+    container_name: esp-pir-manager
     ports:
       - "9052:9052"
     restart: always
