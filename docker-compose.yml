@@ -35,6 +35,8 @@ services:
     image: localhost:5000/esp-pir-manager
     build: ../services/esp-pir-manager
     container_name: esp-pir-manager
+    volumes:
+      - amazon-env:/app/alexa-remote-control/env
     ports:
       - "9052:9052"
     restart: always
@@ -83,3 +85,5 @@ volumes:
     name: jenkins_home
   esp-binfiles:
     name: esp-binfiles
+  amazon-env:
+    name: amazon-env
