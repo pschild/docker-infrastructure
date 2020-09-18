@@ -35,8 +35,6 @@ services:
     image: localhost:5000/esp-pir-manager
     build: ../services/esp-pir-manager
     container_name: esp-pir-manager
-    volumes:
-      - amazon-env:/app/alexa-remote-control/env
     ports:
       - "9052:9052"
     restart: always
@@ -60,7 +58,7 @@ services:
     ports:
       - "1883:1883"
     restart: always
-
+    
   mongodb:
     image: ivanmarban/armhf-mongodb
     container_name: mongodb
@@ -78,6 +76,16 @@ services:
       - /mnt/adesso-commuter-server/screenshots:/app/screenshots
     ports:
       - "9062:9062"
+    restart: always
+  
+  alexa-connector:
+    image: localhost:5000/alexa-connector
+    build: ../services/alexa-connector
+    container_name: alexa-connector
+    volumes:
+      - amazon-env:/app/alexa-remote-control/env
+    ports:
+      - "9072:9072"
     restart: always
 
 volumes:
