@@ -6,7 +6,7 @@ The included `docker-compose.yml` builds/starts the following containers:
  - **watchtower**: Service to automatically watch for newer versions of images, based on [containrrr/watchtower](https://hub.docker.com/r/containrrr/watchtower)
  - **jenkins**: CI/CD Tool, based on [jenkins4eval/jenkins](https://hub.docker.com/r/jenkins4eval/jenkins), see `jenkins/Dockerfile`
  - **ESP services**:
-   - [esp-pir-endpoint](https://github.com/pschild/esp-pir-endpoint)
+   - [esp-pir-manager](https://github.com/pschild/esp-pir-manager)
    - [esp-update-server](https://github.com/pschild/esp-update-server)
    - [esp-mqtt-broker](https://github.com/pschild/esp-mqtt-broker)
 
@@ -17,7 +17,7 @@ The included `docker-compose.yml` builds/starts the following containers:
   - smart-home/
     - docker-infrastructure/ (this repo)
     - services/
-      - esp-pir-endpoint/
+      - esp-pir-manager/
       - esp-update-server/
       - ...
 
