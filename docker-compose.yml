@@ -1,13 +1,13 @@
 version: "3.8"
 services:
-  registry:
-    image: registry:2
-    container_name: registry
-    ports:
-      - 5000:5000
-    volumes:
-      - /mnt/registry:/var/lib/registry
-    restart: always
+  # registry:
+    # image: registry:2
+    # container_name: registry
+    # ports:
+      # - 5000:5000
+    # volumes:
+      # - /mnt/registry:/var/lib/registry
+    # restart: always
 
   jenkins:
     image: jenkins
@@ -23,13 +23,13 @@ services:
       - "50000:50000"
     restart: always
 
-  watchtower:
-    image: containrrr/watchtower
-    container_name: watchtower
-    volumes:
-      - /var/run/docker.sock:/var/run/docker.sock
-    command: --interval 300 --cleanup
-    restart: always
+  # watchtower:
+    # image: containrrr/watchtower
+    # container_name: watchtower
+    # volumes:
+      # - /var/run/docker.sock:/var/run/docker.sock
+    # command: --interval 300 --cleanup
+    # restart: always
 
   esp-pir-manager:
     image: localhost:5000/esp-pir-manager
@@ -57,6 +57,7 @@ services:
       # - "mongodb"
     ports:
       - "1883:1883"
+      - "1884:1884"
     restart: always
     
   # mongodb:
@@ -77,6 +78,14 @@ services:
     ports:
       - "9062:9062"
     restart: always
+
+  # adesso-commuter-web:
+    # image: adesso-commuter-web
+    # build: ../services/adesso-commuter-web
+    # container_name: adesso-commuter-web
+    # ports:
+      # - "80:80"
+    # restart: always
   
   alexa-connector:
     image: localhost:5000/alexa-connector
