@@ -9,19 +9,19 @@ services:
       # - /mnt/registry:/var/lib/registry
     # restart: always
 
-  jenkins:
-    image: jenkins
-    build: ./jenkins
-    container_name: jenkins
-    volumes:
-      - jenkins_home:/var/jenkins_home
-      - /var/run/docker.sock:/var/run/docker.sock
-      - /usr/bin/docker:/usr/bin/docker
-      - esp-binfiles:/var/binfiles
-    ports:
-      - "8080:8080"
-      - "50000:50000"
-    restart: always
+  # jenkins:
+    # image: jenkins
+    # build: ./jenkins
+    # container_name: jenkins
+    # volumes:
+      # - jenkins_home:/var/jenkins_home
+      # - /var/run/docker.sock:/var/run/docker.sock
+      # - /usr/bin/docker:/usr/bin/docker
+      # - esp-binfiles:/var/binfiles
+    # ports:
+      # - "8080:8080"
+      # - "50000:50000"
+    # restart: always
 
   # watchtower:
     # image: containrrr/watchtower
@@ -79,13 +79,13 @@ services:
       - "9062:9062"
     restart: always
 
-  # adesso-commuter-web:
-    # image: adesso-commuter-web
-    # build: ../services/adesso-commuter-web
-    # container_name: adesso-commuter-web
-    # ports:
-      # - "80:80"
-    # restart: always
+  adesso-commuter-web:
+    image: adesso-commuter-web
+    build: ../services/adesso-commuter-web
+    container_name: adesso-commuter-web
+    ports:
+      - "9082:80"
+    restart: always
   
   alexa-connector:
     image: localhost:5000/alexa-connector
@@ -98,8 +98,8 @@ services:
     restart: always
 
 volumes:
-  jenkins_home:
-    name: jenkins_home
+  # jenkins_home:
+    # name: jenkins_home
   esp-binfiles:
     name: esp-binfiles
   amazon-env:
